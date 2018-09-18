@@ -1,0 +1,3 @@
+'''
+Getting directory initialized
+'''
