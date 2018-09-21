@@ -1,7 +1,7 @@
 # Disaster_Management
 NLP on news, twits for disaster management
 
-### Disaster Response Pipeline Project
+### Disaster Response Pipeline
 In this project, we use the NLTK package to tokenize and vectorize text messages (news, twits).
 The resulting tfidf matrices are then trained against the targets 
 (multiclass, multioutput labels corresponding to the disaster aid category).
