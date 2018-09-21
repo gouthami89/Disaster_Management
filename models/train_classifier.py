@@ -28,7 +28,7 @@ from sklearn.multiclass import OneVsRestClassifier as ORC
 from sklearn.multioutput import MultiOutputClassifier as MOC
 
 from sklearn.grid_search import GridSearchCV as GS
-from sklearn.metrics import make_scorer, accuracy_score, precision_score, recall_score
+from sklearn.metrics import make_scorer, accuracy_score, precision_score, recall_score, f1_score
 
 import pickle
 
@@ -113,6 +113,7 @@ def evaluate_model(model, X_test, Y_test, category_names):
         if cat != 'related':
             print('Precision is {}'.format(round(precision_score(Y_test[:,c], Y_pred[:,c]), 2)))
             print('Recall is {}'.format(round(recall_score(Y_test[:,c], Y_pred[:,c]), 2)))
+            print('F1 is {}'.format(round(f1_score(Y_test[:,c], Y_pred[:,c]), 2)))
         print('\n')
         
 def save_model(model, model_filepath):
@@ -151,7 +152,7 @@ def main():
         model_gs = GS(model, parameters, scoring=accuracy_sc)
         model_gs.fit(X_train, Y_train)
         best_model = model_gs.best_estimator_
-        import pdb; pdb.set_trace()
+
         print('Evaluating trained pipeline on testing dataset...')
         test_accuracy = evaluate_model(best_model, X_test, Y_test, category_names)
 
